@@ -25,6 +25,3 @@ def brand_update(brand_id):
         db.session.commit()
         return redirect('/index')
     return render_template('brand_update.html', brand=brand, form=form)
-
-
-
