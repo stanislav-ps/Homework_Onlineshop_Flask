@@ -1,9 +1,7 @@
 from datetime import datetime
 
 from app import db
-
 from flask import url_for
-
 
 class Brand(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -30,12 +28,14 @@ class Item(db.Model):
     def logo_url(self):
         return f'/static/{self.logo}' if self.logo else ''
 
+    def get_update_url(self):
+        return url_for('item_update', item_id=self.id)
+
 
     def get_absolute_url(self):
         return url_for('item_detail', item_id=self.id)
 
-    def get_update_url(self):
-        return url_for('item_update', item_id=self.id)
+
 
 
 class User(db.Model):

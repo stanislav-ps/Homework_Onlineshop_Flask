@@ -12,10 +12,12 @@ class ItemCreationForm(FlaskForm):
     price = FloatField('price', validators=[DataRequired()])
     brand = SelectField('brand', choices=[])
 
+
 class ItemUpdateForm(FlaskForm):
     title = StringField('title', validators=[DataRequired()])
     price = FloatField('price', validators=[DataRequired()])
     logo = FileField()
+
 
 class AddToCartForm(FlaskForm):
     pass

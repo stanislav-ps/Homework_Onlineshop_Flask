@@ -1,11 +1,24 @@
 from app import app, db
 from flask import render_template, request, redirect, url_for
+
 from app.forms import BrandUpdateForm, ItemCreationForm, ItemUpdateForm, AddToCartForm
 from app.models import Brand, Item, User, UsersItem
+
 import os
 
 def get_user():
     return User.query.first()
+
+@app.route('/create-user')
+def create_user():
+    # db.session.add(User(name='Test user'))
+    # db.session.commit()
+    # from flask import jsonify
+    # return jsonify({'ok': True})
+    user = get_user()
+    from flask import jsonify
+    return jsonify({'id': user.id, 'name': user.name})
+
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
@@ -22,6 +35,7 @@ def index():
         'items_list': items_list,
     }
     return render_template('index.html', **context)
+
 
 
 @app.route('/brand-update/<brand_id>', methods=['GET', 'POST'])
@@ -68,6 +82,7 @@ def item_detail(item_id):
     return render_template('item_detail.html', item=item, form=form)
 
 
+
 @app.route('/brand-create', methods=['GET', 'POST'])
 def brand_create():
     form = BrandUpdateForm()
@@ -99,17 +114,6 @@ def item_update(item_id):
         db.session.commit()
         return redirect(success_url)
     return render_template('item_update.html', item=item, form=form)
-
-
-@app.route('/create-user')
-def create_user():
-    # db.session.add(User(name='Test user'))
-    # db.session.commit()
-    # from flask import jsonify
-    # return jsonify({'ok': True})
-    user = get_user()
-    from flask import jsonify
-    return jsonify({'id': user.id, 'name': user.name})
 
 
 @app.route('/cart')

@@ -9,7 +9,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+
 </head>
 
 <body>
@@ -29,6 +30,7 @@
 </div>
 <!--====================  End of header area  ====================-->
 
+
 <!--====================  breadcrumb area ====================-->
 <div class="breadcrumb-area">
     <div class="container">
@@ -37,30 +39,34 @@
 </div>
 <!--====================  End of breadcrumb area  ====================-->
 
+
 <!--====================  Product area ====================-->
 <div class="container" style="padding: 120px 12px">
     <div class="row">
         <div class="col-md-6">
             <img src="{{ item.logo_url }}" class="img-fluid" alt="Product Images">
+
         </div>
         <div class="col-md-6">
             <p>ID: {{ item.id }}</p>
-            <p>Название товара: {{ item.title }}</p>
-            <p>Бренд: {{ item.brand.title }}</p>
+<p>Название товара: {{ item.title }}</p>
+<p>Бренд: {{ item.brand.title }}</p>
+
             <form method="post" class="mt-4" enctype="multipart/form-data">
-                {{ form.hidden_tag() }}
-                <label for="title">Название:</label>
-                {{ form.title(class="form-control") }}
-                <label for="price">Цена:</label>
-                {{ form.price(class="form-control") }}
-                <label for="logo">Картинка:</label>
-                {{ form.logo(class="form-control") }}
-                <button type="submit" class="btn btn-success my-2 me-2" name="action" value="save">Сохранить</button>
-                <button type="submit" class="btn btn-danger my-2 ms-2" name="action" value="del">Удалить товар</button>
-                {% if form.errors %}
-                <p>{{ form.errors }}</p>
-                {% endif %}
-            </form>
+    {{ form.hidden_tag() }}
+    <label for="title">Название:</label>
+    {{ form.title(class="form-control") }}
+    <label for="price">Цена:</label>
+    {{ form.price(class="form-control") }}
+    <label for="logo">Картинка:</label>
+    {{ form.logo(class="form-control") }}
+    <button type="submit" class="btn btn-success my-2 me-2" name="action" value="save">Сохранить</button>
+    <button type="submit" class="btn btn-danger my-2 ms-2" name="action" value="del">Удалить товар</button>
+    {% if form.errors %}
+    <p>{{ form.errors }}</p>
+    {% endif %}
+</form>
+
         </div>
     </div>
 </div>
