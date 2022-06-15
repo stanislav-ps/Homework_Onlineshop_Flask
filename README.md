@@ -1,5 +1,5 @@
 # Homework_Onlineshop_Flask
-Сайт https://fierce-plains-86821.herokuapp.com/
+Запущенный проект: https://fierce-plains-86821.herokuapp.com/
 
 Описание задачи
 В проекте onlineshop необходимо создать модель User - это таблица для хранения пользователей. Модель User должна содержать следующие поля:
